@@ -11,7 +11,7 @@
 #' @importFrom rlang .data
 contour_plot = function(grid_shape,
                         background_col = "#2a3c4b",
-                        line_col = "#3db573"){
+                        line_col = "#e9ebed"){
 
   if(!is.data.frame(grid_shape)){stop("grid_shape must be a dataframe")}
   if(!is.character(background_col)){stop("background_col must be a character string")}
