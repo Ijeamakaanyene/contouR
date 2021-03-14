@@ -28,6 +28,7 @@ devtools::install_github("Ijeamakaanyene/contouR")
 ``` r
 library(contouR)
 
+
 contour_grid(grid_size = 15, point_dist = .5, 
              z_method = "runif", z = 5, z_span = 3) %>%
   contour_shape(radius = 5.2, 

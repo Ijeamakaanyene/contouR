@@ -30,8 +30,9 @@ devtools::install_github("Ijeamakaanyene/contouR")
 ```
 ## Example
 
-```{r example}
+```{r example, fig.width=6, fig.height = 6}
 library(contouR)
+
 
 contour_grid(grid_size = 15, point_dist = .5, 
              z_method = "runif", z = 5, z_span = 3) %>%
