@@ -1,3 +1,14 @@
+#' Turn the contour grid into a shape
+#'
+#' @param grid dataframe of x, y, and z points
+#' @param radius radius of the shape
+#' @param x_center x coordinate of the center of the shape
+#' @param y_center y coordinate of the center of the shape
+#'
+#' @return data frame with the x, y and z coordinates of the points
+#' @export
+#'
+#' @importFrom rlang .data
 contour_shape = function(grid,
                          radius,
                          x_center,
@@ -14,7 +25,7 @@ contour_shape = function(grid,
     radius = radius)
 
   grid_shape = grid %>%
-    create_shape(., param) %>%
+    create_shape(param) %>%
     identity()
 
   return(grid_shape)

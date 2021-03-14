@@ -1,5 +1,21 @@
-# contour grids
-
+#' Create the contour grid
+#'
+#' @param seed Value or seed for the random number generator (numeric)
+#' @param grid_size Maximum value for x and y (numeric)
+#' @param point_dist Increment of the sequence for x and y (numeric)
+#' @param z_method Distribution options for random generation for z values; options are rnorm, rpois, runif
+#' @param z Values for creating the z values (numeric)
+#' @param z_span Range of values for z (numeric), used as the additional parameter for the  random number distribution
+#'
+#' @return data frame with the x, y and z coordinates of the points
+#' @export
+#'
+#' @examples
+#' # generates a 20 by 20 grid of points, with a distance of .25 between points,
+#' # and the z values are generated using a normal distribution with a mean of 3 and SD of 1
+#' grid_points = contour_grid(grid_size = 20, point_dist = .25, z_method = "rnorm", z = 3, z_span = 1)
+#'
+#' @importFrom rlang .data
 contour_grid = function(seed = 117,
                         grid_size,
                         point_dist,
@@ -28,8 +44,7 @@ contour_grid = function(seed = 117,
 
   # Creating output grid
   grid_points = initiate_grid(param) %>%
-    calculate_z(., param) %>%
-    identity()
+    calculate_z(param)
 
   return(grid_points)
 }
