@@ -1,3 +1,6 @@
+# Internal functions operating the contour_*() functions
+
+
 # calculate the distance between points
 distance_formula = function(x2, x1, y2, y1){
   dist = sqrt((x2 - x1)^2 + (y2 - y1)^2)
@@ -49,8 +52,9 @@ calculate_z = function(grid_points, param){
 # modify the output grid to be in a shape
 create_shape = function(grid_points, param){
   grid_points = grid_points %>%
-    dplyr::mutate(distance = distance_formula(param$x_center, x, param$y_center, y)) %>%
-    dplyr::filter(distance < param$radius)
+    dplyr::mutate(distance = distance_formula(param$x_center, .data$x, param$y_center, .data$y)) %>%
+    dplyr::filter(.data$distance < param$radius) %>%
+    dplyr::select(-.data$distance)
 
   return(grid_points)
 }
