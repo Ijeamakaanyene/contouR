@@ -1,0 +1,19 @@
+Package: contouR
+Title: Generate images using the idea of contours
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Ijeamaka",
+           family = "Anyene",
+           role = c("aut", "cre"),
+           email = "Ijeamaka.Anyene@gmail.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: A generative system for creating interesting patterns using a grid system and ggplot2::geom_contour()
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.2
+Imports: 
+    magrittr,
+    dplyr,
+    ggplot2
