@@ -27,6 +27,8 @@ contour_grid = function(seed = 117,
   if(!is.numeric(point_dist)){stop("point_dist must be a numeric value")}
   if(!is.numeric(z)){stop("z must be a numeric value")}
   if(!is.numeric(z_span)){stop("z_span must be a numeric value")}
+  if(z < 0){stop("z must be greater than 0")}
+  if(z_span < 0){stop("z_span must be greater than 0")}
   if(!(z_method %in% c("rpois", "rnorm", "runif"))){stop("z_method must be selected from allowed distributions: rpois, rnorm, runif")}
 
 
