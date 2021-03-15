@@ -60,6 +60,30 @@ create_shape = function(grid_points, param){
 }
 
 
+create_rings = function(param){
+  parts = 10
+  val = pi/parts
+  start_ops = val * 1:parts
+  rings = list()
+
+  for(i in 1:parts){
+    start = sample(start_ops, 1)
+    end = sample(1:(parts/2), size = 1)
+    size = sample(param$radius:param$radius + 5, size = 1)
+
+    rings[[i]] = data.frame(
+      len = seq(start, start*end, length.out = 50),
+      x = (sin(len)*size) + param$x_center,
+      y = (cos(len)*size) + param$y_center,
+      group = LETTERS[i]
+    )
+  }
+
+  return(dplyr::bind_rows(rings))
+}
+
+
+
 
 
 
