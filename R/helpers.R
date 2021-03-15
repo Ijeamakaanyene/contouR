@@ -36,6 +36,11 @@ use_z_method = function(param){
       min = param$z - param$z_span,
       max = param$z + param$z_span
     )
+  } else if(param$z_method == "sample"){
+    stat_calc = sample(
+      x = param$z:(param$z + param$z_span),
+      size = dplyr::n(),
+      replace = TRUE)
   }
   return(stat_calc)
 }
