@@ -23,17 +23,35 @@ You can install the current verion of contouR from
 devtools::install_github("Ijeamakaanyene/contouR")
 ```
 
-## Example
+## Example: without rings
 
 ``` r
 library(contouR)
 
-
-contour_grid(grid_size = 15, point_dist = .5, 
-             z_method = "runif", z = 5, z_span = 3) %>%
+#set up your data
+setup = contour_grid(grid_size = 20, point_dist = .25, 
+             z_method = "runif", z = 10, z_span = 3) %>%
   contour_shape(radius = 5.2, 
-                x_center = 7, y_center = 7) %>%
-  contour_plot()
+                x_center = 7, y_center = 7)
+
+# plot your data
+contour_plot(setup$grid_shape)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
+
+## Example: with rings
+
+``` r
+#set up your data
+setup = contour_grid(grid_size = 20, point_dist = .25, 
+             z_method = "runif", z = 10, z_span = 3) %>%
+  contour_shape(radius = 7.2, 
+                x_center = 10, y_center = 10, 
+                num_rings = 10)
+
+# plot your data
+contour_plot(setup$grid_shape, setup$rings)
+```
+
+<img src="man/figures/README-example-rings-1.png" width="100%" />
