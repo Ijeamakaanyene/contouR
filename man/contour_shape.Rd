@@ -4,7 +4,7 @@
 \alias{contour_shape}
 \title{Turn the contour grid into a shape}
 \usage{
-contour_shape(grid, radius, x_center, y_center)
+contour_shape(grid, radius, x_center, y_center, num_rings = NULL)
 }
 \arguments{
 \item{grid}{dataframe of x, y, and z points}
@@ -16,7 +16,9 @@ contour_shape(grid, radius, x_center, y_center)
 \item{y_center}{y coordinate of the center of the shape}
 }
 \value{
-data frame with the x, y and z coordinates of the points
+a list where the first item is a data frame with the
+x, y and z coordinates of the points and the second items is a
+data frame of the coordinates for the rings
 }
 \description{
 Turn the contour grid into a shape

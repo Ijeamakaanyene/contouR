@@ -59,20 +59,21 @@ create_shape = function(grid_points, param){
   return(grid_points)
 }
 
-
+# add rings to the shape
 create_rings = function(param){
   parts = 10
   val = pi/parts
   start_ops = val * 1:parts
   rings = list()
 
-  for(i in 1:parts){
+  for(i in 1:param$num_rings){
     start = sample(start_ops, 1)
     end = sample(1:(parts/2), size = 1)
-    size = sample(param$radius:param$radius + 5, size = 1)
+    size = sample(param$radius:(param$radius + param$num_rings), size = 1)
 
-    rings[[i]] = data.frame(
-      len = seq(start, start*end, length.out = 50),
+    len = seq(start, start*end, length.out = 100)
+
+    rings[[i]] = dplyr::tibble(
       x = (sin(len)*size) + param$x_center,
       y = (cos(len)*size) + param$y_center,
       group = LETTERS[i]

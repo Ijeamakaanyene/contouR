@@ -4,7 +4,12 @@
 \alias{contour_plot}
 \title{Plot the contour grid}
 \usage{
-contour_plot(grid_shape, background_col = "#2a3c4b", line_col = "#e9ebed")
+contour_plot(
+  grid_shape,
+  rings = NULL,
+  background_col = "#2a3c4b",
+  line_col = "#e9ebed"
+)
 }
 \arguments{
 \item{grid_shape}{a dataframe of x, y, and z points}
