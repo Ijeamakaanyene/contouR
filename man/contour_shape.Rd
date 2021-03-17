@@ -4,7 +4,14 @@
 \alias{contour_shape}
 \title{Turn the contour grid into a shape}
 \usage{
-contour_shape(grid, radius, x_center, y_center)
+contour_shape(
+  grid,
+  radius,
+  x_center,
+  y_center,
+  ring_system = NULL,
+  num_rings = NULL
+)
 }
 \arguments{
 \item{grid}{dataframe of x, y, and z points}
@@ -14,9 +21,18 @@ contour_shape(grid, radius, x_center, y_center)
 \item{x_center}{x coordinate of the center of the shape}
 
 \item{y_center}{y coordinate of the center of the shape}
+
+\item{ring_system}{ring system options: halo or multiple.
+This is optional, if you do not want rings leave as default}
+
+\item{num_rings}{The number of rings around the contour shape,
+if choosing multiple ring systems.
+This is optional, if you do not want rings leave default as null}
 }
 \value{
-data frame with the x, y and z coordinates of the points
+a list where the first item is a data frame with the
+x, y and z coordinates of the points and the second items is a
+data frame of the coordinates for the rings (if ring system selected)
 }
 \description{
 Turn the contour grid into a shape

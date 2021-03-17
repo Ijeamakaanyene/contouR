@@ -64,6 +64,45 @@ create_shape = function(grid_points, param){
   return(grid_points)
 }
 
+# add rings to the shape
+create_multiple_rings = function(param){
+  parts = 10
+  val = pi/parts
+  start_ops = val * 1:parts
+  ring_system = list()
+
+  for(i in 1:param$num_rings){
+    start = sample(start_ops, 1)
+    end = sample(1:(parts/2), size = 1)
+    size = sample(param$radius:(param$radius + param$num_rings), size = 1)
+
+    len = seq(start, start*end, length.out = 100)
+
+    ring_system[[i]] = dplyr::tibble(
+      x = (sin(len)*size) + param$x_center,
+      y = (cos(len)*size) + param$y_center,
+      group = LETTERS[i],
+      type = "multiple"
+    )
+  }
+
+  return(dplyr::bind_rows(ring_system))
+}
+
+create_halo = function(param){
+  len = seq(0, 2*pi, length.out = 500)
+
+  ring_system = dplyr::tibble(
+    x = (cos(len)*(param$radius + 4)) + param$x_center,
+    y = (sin(len)*(param$radius + 4)) + param$y_center,
+    group = LETTERS[1],
+    type = "halo"
+  )
+
+  return(ring_system)
+}
+
+
 
 
 
