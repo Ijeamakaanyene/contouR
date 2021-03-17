@@ -31,15 +31,18 @@ contour_shape = function(grid,
     stop("ring system must be selected from options: multiple, halo")
   }
 
+  # params needed in functions
   param = list(
     x_center = x_center,
     y_center = y_center,
     radius = radius,
     num_rings = num_rings)
 
+  # turn input grid into a circle
   grid_shape = grid %>%
     create_shape(param)
 
+  # add optional rings
   if(ring_system == "multiple"){
     rings = create_multiple_rings(param)
 
