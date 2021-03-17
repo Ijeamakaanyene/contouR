@@ -19,6 +19,23 @@ contour_plot = function(grid_shape,
   if(!is.character(background_col)){stop("background_col must be a character string")}
   if(!is.character(line_col)){stop("line_col must be a character string")}
 
+  # controlling mapping for rings
+  if(unique(rings$type) == "halo"){
+    mapping = ggplot2::aes(
+      x = .data$x,
+      y = .data$y,
+      size = 4,
+      alpha = 0.3)
+  } else if(unique(rings$type) == "multiple"){
+    mapping = ggplot2::aes(
+      x = .data$x,
+      y = .data$y,
+      group = .data$group,
+      size = .25)
+  }
+
+
+
   if(is.null(rings)== TRUE){
     output_shape = ggplot2::ggplot(data = grid_shape) +
       ggplot2::geom_contour(ggplot2::aes(x = .data$x, y = .data$y, z = .data$z),
@@ -42,13 +59,15 @@ contour_plot = function(grid_shape,
                             linejoin = "round",
                             color = line_col) +
       ggplot2::geom_path(data = rings,
-                         ggplot2::aes(x = .data$x, y = .data$y, group = .data$group),
-                         lineend = "round",
-                         size = .25,
-                         color = line_col) +
+                         mapping = mapping,
+                         color = line_col,
+                         linejoin = "round") +
+      ggplot2::scale_alpha_identity() +
+      ggplot2::scale_size_identity() +
       ggplot2::coord_equal(expand = c(0)) +
       ggplot2::theme_void() +
-      ggplot2::theme(panel.background =
+      ggplot2::theme(legend.position = "none",
+                     panel.background =
                        ggplot2::element_rect(fill = background_col,
                                              color = background_col),
                      plot.background =

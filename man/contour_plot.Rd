@@ -14,6 +14,8 @@ contour_plot(
 \arguments{
 \item{grid_shape}{a dataframe of x, y, and z points}
 
+\item{rings}{a dataframe of x, y, and group points}
+
 \item{background_col}{a character string used for the background color of the plot}
 
 \item{line_col}{a character string used for the line colors of your plot}
