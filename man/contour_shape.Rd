@@ -9,8 +9,8 @@ contour_shape(
   radius,
   x_center,
   y_center,
-  ring_system = NULL,
-  num_rings = NULL
+  ring_system = "none",
+  num_rings = 0
 )
 }
 \arguments{

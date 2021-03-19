@@ -6,7 +6,7 @@
 \usage{
 contour_plot(
   grid_shape,
-  rings = NULL,
+  rings = NA,
   background_col = "#2a3c4b",
   line_col = "#e9ebed"
 )
