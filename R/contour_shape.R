@@ -20,15 +20,15 @@ contour_shape = function(grid,
                          radius,
                          x_center,
                          y_center,
-                         ring_system = NULL,
-                         num_rings = NULL){
+                         ring_system = "none",
+                         num_rings = 0){
 
   if(!is.data.frame(grid)){stop("grid must be a dataframe")}
   if(!is.numeric(radius)){stop("radius must be numeric")}
   if(!is.numeric(x_center)){stop("x_center must be numeric")}
   if(!is.numeric(y_center)){stop("y_center must be numeric")}
-  if(!is.null(ring_system) & !(ring_system %in% c("multiple", "halo"))){
-    stop("ring system must be selected from options: multiple, halo")
+  if(!(ring_system %in% c("multiple", "halo", "none"))){
+    stop("ring system must be selected from options: multiple, halo, or none")
   }
 
   # params needed in functions
@@ -53,6 +53,8 @@ contour_shape = function(grid,
 
     return(list(grid_shape = grid_shape, rings = rings))
   }
+
+
 
   return(list(grid_shape = grid_shape))
 }

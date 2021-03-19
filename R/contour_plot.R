@@ -11,7 +11,7 @@
 #' @export
 #' @importFrom rlang .data
 contour_plot = function(grid_shape,
-                        rings = NULL,
+                        rings = NA,
                         background_col = "#2a3c4b",
                         line_col = "#e9ebed"){
 
@@ -20,23 +20,26 @@ contour_plot = function(grid_shape,
   if(!is.character(line_col)){stop("line_col must be a character string")}
 
   # controlling mapping for optional rings
-  if(unique(rings$type) == "halo"){
-    mapping = ggplot2::aes(
-      x = .data$x,
-      y = .data$y,
-      size = 4,
-      alpha = 0.3)
-  } else if(unique(rings$type) == "multiple"){
-    mapping = ggplot2::aes(
-      x = .data$x,
-      y = .data$y,
-      group = .data$group,
-      size = .25)
+  if(is.na(rings) == FALSE){
+    if(unique(rings$type) == "halo"){
+      mapping = ggplot2::aes(
+        x = .data$x,
+        y = .data$y,
+        size = 4,
+        alpha = 0.3)
+    } else if(unique(rings$type) == "multiple"){
+      mapping = ggplot2::aes(
+        x = .data$x,
+        y = .data$y,
+        group = .data$group,
+        size = .25)
+    }
   }
 
 
+
   # creating plots
-  if(is.null(rings)== TRUE){
+  if(is.na(rings)== TRUE){
     output_shape = ggplot2::ggplot(data = grid_shape) +
       ggplot2::geom_contour(ggplot2::aes(x = .data$x, y = .data$y, z = .data$z),
                             size = .25,
