@@ -28,31 +28,39 @@ You can install the current verion of contouR from [GitHub](https://github.com/)
 # install.packages("devtools")
 devtools::install_github("Ijeamakaanyene/contouR")
 ```
+
+If you make any fun art with this package, please feel free to contact me on twitter <a href="https://twitter.com/ijeamaka_a"> @ijeamaka_a</a> to show it off `r emo::ji("moon")`
+
 ## Example: without rings
 
 ```{r example, fig.width=6, fig.height = 6}
 library(contouR)
 
 #set up your data
-setup = contour_grid(grid_size = 20, point_dist = .25, 
+setup = contour_grid(grid_size = 30, point_dist = .25, 
              z_method = "runif", z = 10, z_span = 3) %>%
-  contour_shape(radius = 5.2, 
-                x_center = 7, y_center = 7)
+  contour_shape(radius = 10.2, 
+                x_center = 7, y_center = 7) 
 
 # plot your data
-contour_plot(setup$grid_shape)
+contour_plot(setup$grid_shape) +
+  ggplot2::xlim(1, 30) +
+  ggplot2::ylim(1, 30)
 ```
 
 ## Example: with rings
 
 ```{r example-rings, fig.width=6, fig.height = 6}
 #set up your data
-setup = contour_grid(grid_size = 20, point_dist = .25, 
+setup = contour_grid(grid_size = 30, point_dist = .25, 
              z_method = "runif", z = 10, z_span = 3) %>%
-  contour_shape(radius = 7.2, 
+  contour_shape(radius = 10.2, 
                 x_center = 10, y_center = 10, 
+                ring_system = "multiple",
                 num_rings = 10)
 
 # plot your data
-contour_plot(setup$grid_shape, setup$rings)
+contour_plot(setup$grid_shape, setup$rings) +
+  ggplot2::xlim(1, 30) +
+  ggplot2::ylim(1, 30)
 ```
