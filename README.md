@@ -34,7 +34,7 @@ library(contouR)
 
 #set up your data
 setup = contour_grid(grid_size = 30, point_dist = .25, 
-             z_method = "runif", z = 10, z_span = 3) %>%
+             z_method = "runif", z = 1, z_span = 3) %>%
   contour_shape(radius = 10.2, 
                 x_center = 7, y_center = 7) 
 
@@ -51,7 +51,7 @@ contour_plot(setup$grid_shape) +
 ``` r
 #set up your data
 setup = contour_grid(grid_size = 30, point_dist = .25, 
-             z_method = "runif", z = 10, z_span = 3) %>%
+             z_method = "runif", z = 1, z_span = 3) %>%
   contour_shape(radius = 10.2, 
                 x_center = 10, y_center = 10, 
                 ring_system = "multiple",
@@ -61,11 +61,22 @@ setup = contour_grid(grid_size = 30, point_dist = .25,
 contour_plot(setup$grid_shape, setup$rings) +
   ggplot2::xlim(1, 30) +
   ggplot2::ylim(1, 30)
-#> Warning in if (is.na(rings) == FALSE) {: the condition has length > 1 and only
-#> the first element will be used
-#> Warning in if (is.na(rings) == TRUE) {: the condition has length > 1 and only
-#> the first element will be used
 #> Warning: Removed 407 row(s) containing missing values (geom_path).
 ```
 
 <img src="man/figures/README-example-rings-1.png" width="100%" />
+
+## Example: without contour shape
+
+``` r
+#set up your data
+setup = contour_grid(grid_size = 30, point_dist = .25, 
+             z_method = "runif", z = 1, z_span = 3)
+
+# plot your data
+contour_plot(setup) +
+  ggplot2::xlim(1, 30) +
+  ggplot2::ylim(1, 30)
+```
+
+<img src="man/figures/README-example-no-circle-1.png" width="100%" />
