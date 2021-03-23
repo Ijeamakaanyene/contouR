@@ -20,7 +20,7 @@ contour_plot = function(grid_shape,
   if(!is.character(line_col)){stop("line_col must be a character string")}
 
   # controlling mapping for optional rings
-  if(is.na(rings) == FALSE){
+  if(is.data.frame(rings) == TRUE){
     if(unique(rings$type) == "halo"){
       mapping = ggplot2::aes(
         x = .data$x,
@@ -39,7 +39,7 @@ contour_plot = function(grid_shape,
 
 
   # creating plots
-  if(is.na(rings)== TRUE){
+  if(is.data.frame(rings) == FALSE){
     output_shape = ggplot2::ggplot(data = grid_shape) +
       ggplot2::geom_contour(ggplot2::aes(x = .data$x, y = .data$y, z = .data$z),
                             size = .25,
